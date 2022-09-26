@@ -1,28 +1,14 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Julio",
-      "location": "Canadá"
-    },
-    {
-      "id": "3",
-      "name": "dsfdsfsdf",
-      "location": "Brasil"
-    },
-    {
-      "id": "avcijzP",
-      "name": "",
-      "location": "Brasil"
-    },
-    {
-      "id": "cVNLbr3",
-      "name": ""
-    },
-    {
-      "id": "1",
+      "id": 1,
       "name": "awrea",
-      "location": "awea"
+      "location": "awr"
+    },
+    {
+      "id": 2,
+      "name": "",
+      "preco": "R$00"
     }
   ]
 }

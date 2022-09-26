@@ -94,7 +94,7 @@
     }),
     methods: {
       inicializa() {
-        axios("http://localhost:8080/users")
+        axios("http://localhost:3000/users")
           .then((response) => {
             this.users = response.data;
           })
@@ -112,7 +112,7 @@
           //alteracao
           axios
             .put(
-              "http://localhost:8080/users/" + this.editedIndex.id,
+              "http://localhost:3000/users/" + this.editedIndex.id,
               this.editedItem
             )
             .then((response) => {
@@ -124,7 +124,7 @@
         } else {
           //Inclusao
           axios
-            .post("http://localhost:8080/users", this.editedItem)
+            .post("http://localhost:3000/users", this.editedItem)
             .then((response) => {
               console.log(response);
               this.users.push(this.editedItem);
@@ -142,7 +142,7 @@
         const index = this.users.indexOf(item);
         confirm("Deseja apagar este item?") &&
           axios
-            .delete("http://localhost:8080/users/" + item.id)
+            .delete("http://localhost:3000/users/" + item.id)
             .then((response) => {
               console.log(response.data);
               this.users.splice(index, 1);

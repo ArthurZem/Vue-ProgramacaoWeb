@@ -77,17 +77,17 @@ export default {
        { text: "Descrição", value: "descricao" },
       { text: "Actions", value: "actions", sortable: false },
     ],
-    users: [{ id: 1, name: "Luiz", location: "Philipinas" }],
+    users: [{ id: 1, name: "Luiz", preco: "R$250,00" }],
     editedIndex: -1,
     editedItem: {
       id: 0,
       name: "",
-      location: "Brasil",
+      preco: "R$",
     },
     defaultItem: {
       id: 0,
       name: "",
-      location: "Brasil",
+      preco: "R$00",
     },
   }),
   methods: {
