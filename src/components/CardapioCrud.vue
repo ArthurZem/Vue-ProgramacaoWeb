@@ -55,7 +55,7 @@
         </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item.actions="{ item }">
+    <template v-slot:item="{ item }">
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -68,13 +68,13 @@
 <script>
 import axios from "axios";
 export default {
-  name: "UserCrud",
+  name: "CardapioCrud",
   data: () => ({
     dialog: false,
     headers: [
       { text: "Id", value: "id" },
-      { text: "Nome", value: "name" },
-      { text: "Localização", value: "location" },
+      { text: "Preço", value: "preco" },
+       { text: "Descrição", value: "descricao" },
       { text: "Actions", value: "actions", sortable: false },
     ],
     users: [{ id: 1, name: "Luiz", location: "Philipinas" }],
