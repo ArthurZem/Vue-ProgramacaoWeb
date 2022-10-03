@@ -1,7 +1,7 @@
 <template>
   <v-data-table
     :headers="headers"
-    :items="users"
+    :items="cardapio"
     sort-by="calories"
     class="elevation-1"
   >
@@ -38,8 +38,14 @@
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field
-                      v-model="editedItem.location"
-                      label="Localização"
+                      v-model="editedItem.preco"
+                      label="Preço"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field
+                      v-model="editedItem.descricao"
+                      label="Descrição"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -55,7 +61,7 @@
         </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item="{ item }">
+    <template v-slot:item.actions="{ item }">
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -73,28 +79,38 @@ export default {
     dialog: false,
     headers: [
       { text: "Id", value: "id" },
+      { text: "Nome", value: "name" },
       { text: "Preço", value: "preco" },
-       { text: "Descrição", value: "descricao" },
+      { text: "Descrição", value: "descricao" },
       { text: "Actions", value: "actions", sortable: false },
     ],
-    users: [{ id: 1, name: "Luiz", preco: "R$250,00" }],
+    cardapio: [
+      {
+        id: 1,
+        name: "Lasanha",
+        preco: "R$250,00",
+        descricao: "lasanha de frango para 1 pessoa",
+      },
+    ],
     editedIndex: -1,
     editedItem: {
       id: 0,
       name: "",
       preco: "R$",
+      descricao: "",
     },
     defaultItem: {
       id: 0,
       name: "",
-      preco: "R$00",
+      preco: "R$",
+      descricao: "",
     },
   }),
   methods: {
     inicializa() {
-      axios("http://localhost:3000/users")
+      axios("http://localhost:3000/cardapio")
         .then((response) => {
-          this.users = response.data;
+          this.cardapio = response.data;
         })
         .catch((error) => console.log(error));
     },
@@ -110,40 +126,40 @@ export default {
         //alteracao
         axios
           .put(
-            "http://localhost:3000/users/" + this.editedIndex.id,
+            "http://localhost:3000/cardapio/" + this.editedIndex.id,
             this.editedItem
           )
           .then((response) => {
             console.log(response);
-            Object.assign(this.users[this.editedIndex], this.editedItem);
+            Object.assign(this.cardapio[this.editedIndex], this.editedItem);
             this.close;
           })
           .catch((error) => console.log(error));
       } else {
         //Inclusao
         axios
-          .post("http://localhost:3000/users", this.editedItem)
+          .post("http://localhost:3000/cardapio", this.editedItem)
           .then((response) => {
             console.log(response);
-            this.users.push(this.editedItem);
+            this.cardapio.push(this.editedItem);
             this.close();
           })
           .catch((error) => console.log(error));
       }
     },
     editItem(item) {
-      this.editedIndex = this.users.indexOf(item);
+      this.editedIndex = this.cardapio.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
     deleteItem(item) {
-      const index = this.users.indexOf(item);
+      const index = this.cardapio.indexOf(item);
       confirm("Deseja apagar este item?") &&
         axios
-          .delete("http://localhost:3000/users/" + item.id)
+          .delete("http://localhost:3000/cardapio/" + item.id)
           .then((response) => {
             console.log(response.data);
-            this.users.splice(index, 1);
+            this.cardapio.splice(index, 1);
           })
           .catch((error) => console.log(error));
     },

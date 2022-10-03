@@ -1,14 +1,50 @@
 {
-  "users": [
+  "cardapio": [
     {
-      "id": 1,
-      "name": "awrea",
-      "location": "awr"
+      "id": "1",
+      "name": "Lasanha",
+      "preco": "R$20,00",
+      "descricao": "Lasanha de frango"
     },
     {
-      "id": 2,
-      "name": "",
-      "preco": "R$00"
+      "id": "2",
+      "name": "Batata Frita",
+      "preco": "R$25,90",
+      "descricao": "Batata Frita para 2 pessoas"
+    }
+  ],
+  "users": [
+    {
+      "id": "2",
+      "name": "aera"
+    }
+  ],
+  "garcom": [
+    {
+      "id": "2",
+      "nome": "asra",
+      "salario": "R$154"
+    },
+    {
+      "id": "1",
+      "nome": "aw3era",
+      "salario": "R$4354"
+    }
+  ],
+  "pedido": [
+    {
+      "id": "1",
+      "nomeCliente": "Oscar",
+      "nomeGarcom": "Flávio",
+      "numeroPedido": "5",
+      "mesa": "7"
+    },
+    {
+      "id": "gSgzjSH",
+      "nomeCliente": "rae",
+      "nomeGarcom": "aera",
+      "mesa": "aer",
+      "numeroPedido": "awr"
     }
   ]
 }

@@ -36,12 +36,6 @@
                       label="Nome"
                     ></v-text-field>
                   </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field
-                      v-model="editedItem.location"
-                      label="Localização"
-                    ></v-text-field>
-                  </v-col>
                 </v-row>
               </v-container>
             </v-card-text>
@@ -55,7 +49,7 @@
         </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item="{ item }">
+    <template v-slot:item.actions="{ item }">
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -76,17 +70,15 @@ export default {
       { text: "Nome", value: "name" },
       { text: "Actions", value: "actions", sortable: false },
     ],
-    users: [{ id: 1, name: "Luiz", location: "Philipinas" }],
+    users: [{ id: 1, name: "Luiz"}],
     editedIndex: -1,
     editedItem: {
       id: 0,
       name: "",
-     // location: "Brasil",
     },
     defaultItem: {
       id: 0,
       name: "",
-    //  location: "Brasil",
     },
   }),
   methods: {

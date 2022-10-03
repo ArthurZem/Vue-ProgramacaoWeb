@@ -1,7 +1,7 @@
 <template>
     <v-data-table
       :headers="headers"
-      :items="users"
+      :items="pedido"
       sort-by="calories"
       class="elevation-1"
     >
@@ -32,14 +32,26 @@
                     </v-col>
                     <v-col cols="12" sm="6" md="8">
                       <v-text-field
-                        v-model="editedItem.name"
-                        label="Nome"
+                        v-model="editedItem.nomeCliente"
+                        label="Nome do cliente"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6" md="4">
                       <v-text-field
-                        v-model="editedItem.location"
-                        label="Localização"
+                        v-model="editedItem.nomeGarcom"
+                        label="Nome do garçom"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4">
+                      <v-text-field
+                        v-model="editedItem.numeroPedido"
+                        label="Número do pedido"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" sm="6" md="4">
+                      <v-text-field
+                        v-model="editedItem.mesa"
+                        label="Número da mesa"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -55,7 +67,7 @@
           </v-dialog>
         </v-toolbar>
       </template>
-      <template v-slot:item="{ item }">
+      <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
       </template>
@@ -79,24 +91,28 @@
          { text: "Número da mesa", value: "mesa" },
         { text: "Actions", value: "actions", sortable: false },
       ],
-      users: [{ id: 1, name: "Luiz", location: "Philipinas" }],
+      pedido: [{ id: 1, nomeCliente: "Luiz", nomeGarcom: "Philipinas" , mesa: "1", numeroPedido: "4"}],
       editedIndex: -1,
       editedItem: {
         id: 0,
-        name: "",
-        location: "Brasil",
+        nomeCliente: "",
+        nomeGarcom: "",
+        mesa: "",
+        numeroPedido: ""
       },
       defaultItem: {
         id: 0,
-        name: "",
-        location: "Brasil",
+        nomeCliente: "",
+        nomeGarcom: "",
+        mesa: "",
+        numeroPedido: ""
       },
     }),
     methods: {
       inicializa() {
-        axios("http://localhost:3000/users")
+        axios("http://localhost:3000/pedido")
           .then((response) => {
-            this.users = response.data;
+            this.pedido = response.data;
           })
           .catch((error) => console.log(error));
       },
@@ -112,40 +128,40 @@
           //alteracao
           axios
             .put(
-              "http://localhost:3000/users/" + this.editedIndex.id,
+              "http://localhost:3000/pedido/" + this.editedIndex.id,
               this.editedItem
             )
             .then((response) => {
               console.log(response);
-              Object.assign(this.users[this.editedIndex], this.editedItem);
+              Object.assign(this.pedido[this.editedIndex], this.editedItem);
               this.close;
             })
             .catch((error) => console.log(error));
         } else {
           //Inclusao
           axios
-            .post("http://localhost:3000/users", this.editedItem)
+            .post("http://localhost:3000/pedido", this.editedItem)
             .then((response) => {
               console.log(response);
-              this.users.push(this.editedItem);
+              this.pedido.push(this.editedItem);
               this.close();
             })
             .catch((error) => console.log(error));
         }
       },
       editItem(item) {
-        this.editedIndex = this.users.indexOf(item);
+        this.editedIndex = this.pedido.indexOf(item);
         this.editedItem = Object.assign({}, item);
         this.dialog = true;
       },
       deleteItem(item) {
-        const index = this.users.indexOf(item);
+        const index = this.pedido.indexOf(item);
         confirm("Deseja apagar este item?") &&
           axios
-            .delete("http://localhost:3000/users/" + item.id)
+            .delete("http://localhost:3000/pedido/" + item.id)
             .then((response) => {
               console.log(response.data);
-              this.users.splice(index, 1);
+              this.pedido.splice(index, 1);
             })
             .catch((error) => console.log(error));
       },
