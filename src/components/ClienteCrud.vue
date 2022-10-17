@@ -113,10 +113,10 @@ export default {
       } else {
         //Inclusao
         axios
-          .post("http://localhost:3000/users", this.editedItem)
+          .post("http://localhost:3000/cadastroUsuario", this.editedItem)
           .then((response) => {
             console.log(response);
-            this.users.push(this.editedItem);
+            this.cadastroUsuario.push(this.editedItem);
             this.close();
           })
           .catch((error) => console.log(error));
@@ -125,7 +125,7 @@ export default {
     editItem(item) {
       this.editedIndex = this.users.indexOf(item);
       this.editedItem = Object.assign({}, item);
-      this.dialog = true;
+      this.dialog = true; 
     },
     deleteItem(item) {
       const index = this.users.indexOf(item);

@@ -24,7 +24,7 @@
 
             <v-divider></v-divider>
             <v-card-actions>
-              <v-btn color="blue" type="submit">Login</v-btn>
+              <v-btn color="blue" type="submit" @click="Login">Login</v-btn>
               <v-btn color="blue">Register</v-btn>
             </v-card-actions>
         </v-card>
@@ -33,6 +33,8 @@
   
 </template>
 <script>
+import Axios from 'axios';
+
 export default {
   name: "UserCrud",
   data: () => ({
@@ -49,10 +51,19 @@ export default {
       ],
   }),
   methods: {
+    Login : async function (){
+      const response = await Axios.post('http://localhost:3000/users',
+      {
+        "email": this.email,
+        "password": this.password
+      }
+      )
+      console.log(response);
+    },
     submitHandler(){
       console.log(this.email);
       this.$refs.form.validate();
-    }
+    },
   },
 };
 </script>

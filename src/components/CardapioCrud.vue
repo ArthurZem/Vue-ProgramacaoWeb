@@ -72,7 +72,10 @@
 </template>
 
 <script>
-import axios from "axios";
+
+
+const axios = require('axios');
+
 export default {
   name: "CardapioCrud",
   data: () => ({
@@ -107,8 +110,8 @@ export default {
     },
   }),
   methods: {
-    inicializa() {
-      axios("http://localhost:3000/cardapio")
+    /*inicializa() {
+      axios.get("http://localhost:3000/cardapio")
         .then((response) => {
           this.cardapio = response.data;
         })
@@ -163,6 +166,17 @@ export default {
           })
           .catch((error) => console.log(error));
     },
+  */
+  testa : async function (){
+      const response = await axios.get('http://localhost:3000/cardapio',
+      {
+        "nome": this.nome,
+        "preço": this.preco,
+        "descricao": this.descricao
+      }
+      )
+      console.log(response);
+    }
   },
   computed: {
     formTitle() {
