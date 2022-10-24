@@ -13,7 +13,12 @@
       "descricao": "Batata Frita para 2 pessoas"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "id": 4,
+      "name": "Flávio"
+    }
+  ],
   "garcom": [
     {
       "id": "2",
@@ -29,17 +34,10 @@
   "pedido": [
     {
       "id": "1",
-      "nomeCliente": "Oscar",
-      "nomeGarcom": "Flávio",
-      "numeroPedido": "5",
-      "mesa": "7"
-    },
-    {
-      "id": "gSgzjSH",
-      "nomeCliente": "rae",
-      "nomeGarcom": "aera",
-      "mesa": "aer",
-      "numeroPedido": "awr"
+      "nomeCliente": "Flávio",
+      "nomeGarcom": "Oscar",
+      "mesa": "3",
+      "numeroPedido": "2"
     }
   ]
 }

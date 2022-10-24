@@ -91,7 +91,7 @@
          { text: "Número da mesa", value: "mesa" },
         { text: "Actions", value: "actions", sortable: false },
       ],
-      pedido: [{ id: 1, nomeCliente: "Luiz", nomeGarcom: "Philipinas" , mesa: "1", numeroPedido: "4"}],
+      pedido: [{ id: 1, nomeCliente: "Luiz", nomeGarcom: "Flavio" , mesa: "1", numeroPedido: "4"}],
       editedIndex: -1,
       editedItem: {
         id: 0,

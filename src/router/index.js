@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home'
 import ClienteCrud from '../components/ClienteCrud'
 import CardapioCrud from '../components/CardapioCrud'
-import GarcomCrud from '../components/GarcomCrud'
 import PedidoCrud from '../components/PedidoCrud'
 
 
@@ -23,10 +22,6 @@ const routes = [
   {
     path: '/cardapio',
     component: CardapioCrud
-  },
-  {
-    path: '/garcom',
-    component: GarcomCrud
   },
   {
     path: '/pedido',

@@ -113,7 +113,7 @@ export default {
       } else {
         //Inclusao
         axios
-          .post("http://localhost:3000/cadastroUsuario", this.editedItem)
+          .post("http://localhost:3000/users", this.editedItem)
           .then((response) => {
             console.log(response);
             this.cadastroUsuario.push(this.editedItem);

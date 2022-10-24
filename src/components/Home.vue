@@ -2,13 +2,13 @@
   <v-app>
     <v-content @submit.prevent = "submitHandler" ref="form">
         <v-card width="500" class="mx-auto mt-5">
-            <v-card-title>Teste</v-card-title>
+            <v-card-title >Moodle IFF</v-card-title>
             <v-card-text>
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
                 type="email" 
-                label="Username" 
+                label="Email" 
                 prepend-icon="mdi-account-circle">
               </v-text-field>
               <v-text-field
@@ -42,7 +42,7 @@ export default {
      password: '',
       passwordRules: [
         v => !!v || 'Password is required',
-        v => (v && v.length > 3) || 'Password must be more than 3 characters',
+        v => (v && v.length > 5) || 'Password must be more than 5 characters',
       ],
       email: '',
       emailRules: [
