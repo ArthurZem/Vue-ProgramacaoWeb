@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home'
-import ClienteCrud from '../components/ClienteCrud'
-import CardapioCrud from '../components/CardapioCrud'
-import PedidoCrud from '../components/PedidoCrud'
-
+import ListaJogadores from '../components/ListaJogadores'
 
 Vue.use(VueRouter)
 
@@ -15,18 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/users',
-    component: ClienteCrud
-    
+    path: '/players',
+    component: ListaJogadores
   },
-  {
-    path: '/cardapio',
-    component: CardapioCrud
-  },
-  {
-    path: '/pedido',
-    component: PedidoCrud
-  }
 ]
 
 const router = new VueRouter({
